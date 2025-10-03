@@ -13,21 +13,25 @@ const wrongCharsRegex = /[æø]/g
 
 
 function recoveryVehiclesJson(charsToMap) {
-    return JSON.stringify(corrupted_vehicles.map(vehicle => {
+    return corrupted_vehicles.map(vehicle => {
 
         if (typeof (vehicle.vendas) != 'string' && typeof (vehicle.vendas) != 'number') {
-            throw new Error(`As vendas de ${vehicle.nome} são inválidas (${typeof (vehicle.vendas)}) `);
+            console.error(`As vendas de ${vehicle.nome} são inválidas (${typeof (vehicle.vendas)}) `);
+
+           return vehicle
         }
 
         if (typeof (vehicle.nome) != 'string') {
-            throw new Error(`O campo "nome" é inválido: esperado string, mas recebido (${vehicle.nome})`
+            console.error(`O campo "nome" é inválido: esperado string, mas recebido (${vehicle.nome})`
             );
 
+            return vehicle
         }
 
         if (isNaN(Number(vehicle.vendas))) {
-            throw new Error(`As vendas do veículo ${vehicle.nome} não podem ser convertidas pra um número válido`);
+            console.error(`As vendas do veículo ${vehicle.nome} não podem ser convertidas pra um número válido`);
             
+            return vehicle
         }
 
         // As hipóteses acima, tratam casos onde podemos receber caracteres que não teriam valor numérico, ou mesmo, um caso de falta de valor, como null ou undefined
@@ -40,31 +44,31 @@ function recoveryVehiclesJson(charsToMap) {
             })
 
         }
-    }))
+    })
 }
 
 function recoveryBrandsJson(charsToMap) {
-    return JSON.stringify(
-        corrupted_brands.map(brand => {
+    return  corrupted_brands.map(brand => {
             // Validação do campo "marca"
             if (typeof brand.marca !== 'string') {
-                throw new Error(
+                console.error(
                     `O campo "marca" do item com ID ${brand.id || 'desconhecido'} é inválido: esperado string, recebido ${typeof brand.marca} (${brand.marca})`
                 );
+
+                return brand
             }
 
             return {
                 ...brand,
                 marca: brand.marca.replace(wrongCharsRegex, char => charsToMap.get(char))
             };
-        })
-    );
+        });
 }
 
 
 
 
-const fixed_vehicles = recoveryVehiclesJson(wrongCharsMap)
+const fixed_vehicles = JSON.stringify(recoveryVehiclesJson(wrongCharsMap), null, 2)
 
 
 const fixed_brands = recoveryBrandsJson(wrongCharsMap)
