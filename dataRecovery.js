@@ -44,15 +44,23 @@ function recoveryVehiclesJson(charsToMap) {
 }
 
 function recoveryBrandsJson(charsToMap) {
-    return JSON.stringify(corrupted_brands.map(brand => {
-        return {
-            ...brand,
-            marca: brand.marca.replace(wrongCharsRegex, char => {
-                return charsToMap.get(char)
-            })
-        }
-    }))
+    return JSON.stringify(
+        corrupted_brands.map(brand => {
+            // Validação do campo "marca"
+            if (typeof brand.marca !== 'string') {
+                throw new Error(
+                    `O campo "marca" do item com ID ${brand.id || 'desconhecido'} é inválido: esperado string, recebido ${typeof brand.marca} (${brand.marca})`
+                );
+            }
+
+            return {
+                ...brand,
+                marca: brand.marca.replace(wrongCharsRegex, char => charsToMap.get(char))
+            };
+        })
+    );
 }
+
 
 
 
