@@ -1,18 +1,23 @@
+const fs = require('fs');
+
+
 const corrupted_vehicles = require('./broken_database_1.json')
 const corrupted_brands = require('./broken_database_2.json')
 
 
 
-const wrongCharsMap = new Map([
+
+
+const wrong_chars_map = new Map([
     ["æ", "a"],
     ["ø", "o"]
 ])
 
-const wrongCharsRegex = /[æø]/g
+const wrong_chars_regex = /[æø]/g
 
 
 
-function recoveryVehiclesJson(charsToMap) {
+function recoveryVehicles(charsToMap) {
     return corrupted_vehicles.map(vehicle => {
 
         if (typeof (vehicle.vendas) != 'string' && typeof (vehicle.vendas) != 'number') {
@@ -39,7 +44,7 @@ function recoveryVehiclesJson(charsToMap) {
         return {
             ...vehicle,
             vendas: Number(vehicle.vendas),
-            nome: vehicle.nome.replace(wrongCharsRegex, char => {
+            nome: vehicle.nome.replace(wrong_chars_regex, char => {
                 return charsToMap.get(char)
             })
 
@@ -47,9 +52,8 @@ function recoveryVehiclesJson(charsToMap) {
     })
 }
 
-function recoveryBrandsJson(charsToMap) {
-    return  corrupted_brands.map(brand => {
-            // Validação do campo "marca"
+function recoveryBrands(charsToMap) {
+    return corrupted_brands.map(brand => {
             if (typeof brand.marca !== 'string') {
                 console.error(
                     `O campo "marca" do item com ID ${brand.id || 'desconhecido'} é inválido: esperado string, recebido ${typeof brand.marca} (${brand.marca})`
@@ -60,7 +64,7 @@ function recoveryBrandsJson(charsToMap) {
 
             return {
                 ...brand,
-                marca: brand.marca.replace(wrongCharsRegex, char => charsToMap.get(char))
+                marca: brand.marca.replace(wrong_chars_regex, char => charsToMap.get(char))
             };
         });
 }
@@ -68,20 +72,28 @@ function recoveryBrandsJson(charsToMap) {
 
 
 
-const fixed_vehicles = JSON.stringify(recoveryVehiclesJson(wrongCharsMap), null, 2)
+const fixed_vehicles = JSON.stringify(recoveryVehicles(wrong_chars_map), null, 2)
+
+fs.writeFileSync('fixed_database_1.json', fixed_vehicles, 'utf-8')
 
 
-const fixed_brands = recoveryBrandsJson(wrongCharsMap)
+const fixed_brands = JSON.stringify(recoveryBrands(wrong_chars_map), null, 2)
+
+fs.writeFileSync('fixed_database_2.json', fixed_brands, 'utf-8')
 
 
 
 
-// console.log('----- MARCAS -----')
 
-// console.log(fixed_brands)
 
 console.log('----- VEICULOS -----')
 console.log(fixed_vehicles)
+console.log('--------------------')
+
+console.log('----- MARCAS -----')
+console.log(fixed_brands)
+console.log('--------------------')
+
 
 
 
@@ -91,7 +103,7 @@ console.log(fixed_vehicles)
 //     return corruptedArray.map(item => {
 //         return {
 //             ...item,
-//             [corruptedField]: item[corruptedField].replace(wrongCharsRegex, char => {
+//             [corruptedField]: item[corruptedField].replace(wrong_chars_regex, char => {
 //                 return charsToMap.get(char)
 //             })
 //         }
