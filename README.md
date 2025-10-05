@@ -39,6 +39,7 @@ Você também encontrou um problema com os valores de vendas: eles deveriam ser 
 ### SQL
 - Durante a criação das tabelas, unifiquei as informações necessárias, através de um 'JOIN', mesclando elementos da tabela de veiculos e marcas. Optei por criar como tabela por ser algo mais conhecido, porém uma VIEW funcionaria perfeitamente também.
 - Já falando sobre as queries, em sua maioria foram usadas funções mais básicas como `SELECT`, `ORDER BY`, `LIMIT`, `FLOOR` e `CONCAT`.
+- Dentro de cada arquivo, tem comentários explicando o que cada comando está fazendo e a linha de racicionio por trás.
 
 
 ## Desafios Enfrentados
