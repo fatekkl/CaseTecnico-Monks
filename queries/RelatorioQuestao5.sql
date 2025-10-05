@@ -17,7 +17,7 @@ ORDER BY vendas DESC
 LIMIT 10;
 
 
-/* Da mesma forma que na questão, fiz a captura de uma faixa de preço, mas dessa vez mais específica, a cada 5000. Comprovando que os 10 veículos mais vendidos, estão nessa faixa de preço e dando destaque no quanto isso foi importante */
+/* Da mesma forma que na questão 3, fiz a captura de uma faixa de preço, mas dessa vez mais específica, a cada 5000. Comprovando que os 10 veículos mais vendidos, estão nessa faixa de preço e dando destaque no quanto isso foi importante */
 
 SELECT 
     CONCAT(

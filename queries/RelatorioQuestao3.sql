@@ -4,7 +4,7 @@ Qual faixa mais vendeu carros? Quantos? */
 
 /* Resposta:  
 
-    A faixa de que mais vendeu carros foi a de 30000 - 3999. 
+    A faixa de que mais vendeu carros foi a de 30000 - 39999. 
     511 Carros foram vendidos nessa faixa.
 
 */

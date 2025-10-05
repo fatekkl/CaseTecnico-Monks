@@ -3,7 +3,6 @@
 /* Questão: Qual marca teve o maior volume de vendas? */
 
 /* Resposta: 
-
     Fiat
 */
 
