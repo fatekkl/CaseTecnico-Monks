@@ -1,4 +1,11 @@
-# Caso Técnico - Data Analytics - Monks
+# Case Técnico - Data Analytics - Monks
+
+ - Links Importantes:
+
+    [Relatório de Vendas](./RelatórioVendas-Monks.pdf)
+    [Looker Studio](https://lookerstudio.google.com/u/0/reporting/4e3d1fde-9960-4812-a965-4403aff9f1dd/page/nrWaF)
+
+
 
 ## Como executar a solução?
 
@@ -49,10 +56,14 @@ Você também encontrou um problema com os valores de vendas: eles deveriam ser 
     Quando li sobre essa pergunta, percebi que ela não era tão técnica, em quesito SQL e tive que analisar os dados com mais cautela, rodando diversas queries e pesquisando sobre os modelos de carro e entender melhor a relação entre os carros mais vendidos.
 
 
+**3. Criação das tabelas para visualização no Looker Studio .**
+
+    Durante o desenvolvimento, tive a idéia de criar um report no Google Looker Studio, para facilitar a visualização das respostas, tive algumas dificuldades pra deixar a visualização dos dados da forma como eu queria, principalmente por que ainda não entendia direito a diferença entre as métricas e dimensões 😅😅, mas tentando diversas opções, consegui um resultado satisfatório. Criei 4 páginas, uma para cada finalidade sendo elas, visualização dos veículos ordenados pelo número de vendas, veículos ordenados pela quantidade de receita gerada,  marcas ordenadas pelo ticket médio e faixas de preço mais vendidas.
+
 
 
 ## Próximos Passos
 
-  - [ ] Implementar gráficos no Looker Studio, baseados nas bases de dados corrigidas.
-  - [ ] Criar o PDF mostrando os gráficos e respondendo as perguntas nele
-  - [ ] Colocar documento no Google Drive
+  - [x] Implementar gráficos no Looker Studio, baseados nas bases de dados corrigidas.
+  - [x] Criar o PDF respondendo as perguntas nele
+  - [x] Colocar documento no Google Drive
