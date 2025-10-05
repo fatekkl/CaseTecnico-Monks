@@ -46,7 +46,7 @@ function recoveryVehicles(charsToMap) {
             vendas: Number(vehicle.vendas),
             nome: vehicle.nome.replace(wrong_chars_regex, char => {
                 return charsToMap.get(char)
-            })
+            }).trim()
 
         }
     })
@@ -64,7 +64,7 @@ function recoveryBrands(charsToMap) {
 
             return {
                 ...brand,
-                marca: brand.marca.replace(wrong_chars_regex, char => charsToMap.get(char))
+                marca: brand.marca.replace(wrong_chars_regex, char => charsToMap.get(char)).trim()
             };
         });
 }
