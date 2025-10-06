@@ -3,8 +3,8 @@
  - Links Importantes:
 
     <a href="./RelatorioVendas-Monks.pdf" target="_blank">Relatório de Vendas</a>
-<a href="https://lookerstudio.google.com/u/0/reporting/4e3d1fde-9960-4812-a965-4403aff9f1dd/page/nrWaF" target="_blank">Looker Studio</a>
-<a href="https://drive.google.com/drive/folders/1h1eYhSlzBDFLa960ltJPsDdoc4GsKiS9?hl=pt-br" target="_blank">Drive</a>
+    <a href="https://lookerstudio.google.com/u/0/reporting/4e3d1fde-9960-4812-a965-4403aff9f1dd/page/nrWaF" target="_blank">Looker Studio</a>
+    <a href="https://drive.google.com/drive/folders/1h1eYhSlzBDFLa960ltJPsDdoc4GsKiS9?hl=pt-br" target="_blank">Drive</a>
 
 
 
